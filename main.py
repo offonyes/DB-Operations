@@ -1,6 +1,7 @@
 import sqlite3
 import random
 
+
 class BookDatabase:
     def __init__(self, db_name):
         self.conn = sqlite3.connect(db_name)
@@ -18,16 +19,26 @@ class BookDatabase:
         """)
         self.conn.commit()
 
-    def generate_random_book(self):
-        name = random.choice(["Pride and Prejudice", "Anna Karenina", "Crime and Punishment", "Don Quixote", "Lord of the Rings", "Hamlet",
-                              "War and Peace", "To Kill a Mockingbird", "The Great Gatsby", "1984", "Brave New World", "The Catcher in the Rye",
-                              "Moby-Dick", "The Odyssey", "The Iliad", "Frankenstein", "Dracula", "The Count of Monte Cristo", "The Picture of Dorian Gray",
-                              "The Hobbit", "Alice's Adventures in Wonderland", "The Shining", "The Grapes of Wrath", "One Hundred Years of Solitude",
-                              "The Brothers Karamazov", "Les Misérables", "The Hitchhiker's Guide to the Galaxy", "A Tale of Two Cities", "The Scarlet Letter",
-                              "The Old Man and the Sea", "Gone with the Wind", "Wuthering Heights", "The Jungle", "The Sound and the Fury", "Atlas Shrugged"])
+    @staticmethod
+    def generate_random_book():
+        name = random.choice(
+            ["Pride and Prejudice", "Anna Karenina", "Crime and Punishment", "Don Quixote", "Lord of the Rings",
+             "Hamlet",
+             "War and Peace", "To Kill a Mockingbird", "The Great Gatsby", "1984", "Brave New World",
+             "The Catcher in the Rye",
+             "Moby-Dick", "The Odyssey", "The Iliad", "Frankenstein", "Dracula", "The Count of Monte Cristo",
+             "The Picture of Dorian Gray",
+             "The Hobbit", "Alice's Adventures in Wonderland", "The Shining", "The Grapes of Wrath",
+             "One Hundred Years of Solitude",
+             "The Brothers Karamazov", "Les Misérables", "The Hitchhiker's Guide to the Galaxy", "A Tale of Two Cities",
+             "The Scarlet Letter",
+             "The Old Man and the Sea", "Gone with the Wind", "Wuthering Heights", "The Jungle",
+             "The Sound and the Fury", "Atlas Shrugged"])
         pages = random.randint(50, 500)
         cover_type = random.choice(["Hardcover", "Paperback", " Softcover", "E-book"])
-        category = random.choice(["Fiction", "Non-Fiction", "Science Fiction", "Mystery", "Fantasy", "Horror", "Romance", "Adventure", "Historical fiction", "Thriller", "Magical realism"])
+        category = random.choice(
+            ["Fiction", "Non-Fiction", "Science Fiction", "Mystery", "Fantasy", "Horror", "Romance", "Adventure",
+             "Historical fiction", "Thriller", "Magical realism"])
         return name, pages, cover_type, category
 
     def insert_random_books(self, num_books):
@@ -49,6 +60,7 @@ class BookDatabase:
 
     def close_connection(self):
         self.conn.close()
+
 
 book_db = BookDatabase("books.db")
 book_db.create_table()
