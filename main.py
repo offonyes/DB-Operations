@@ -55,7 +55,7 @@ class BookDatabase:
         return self.cursor.fetchone()[0]
 
     def get_largest_book_name(self):
-        self.cursor.execute("SELECT name FROM Book ORDER BY pages DESC LIMIT 1")
+        self.cursor.execute("SELECT name FROM Book ORDER BY pages")
         return self.cursor.fetchone()[0]
 
     def close_connection(self):
