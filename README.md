@@ -1,5 +1,3 @@
-**Readme for Book Database Project**
-
 ## Overview
 This Python script demonstrates the use of SQLite to create a simple book database, generate random book entries, and perform basic queries on the database. The `BookDatabase` class provides methods to create a table, insert random books, calculate the average number of pages, and find the largest book based on the number of pages.
 
